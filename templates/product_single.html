@@ -1,0 +1,385 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}{{title}}{% endblock  %}
+{% block  content %}	
+	<!-- =====================================
+    	==== Start breadcrumb -->
+   	<div class="breadcrumb">
+   		<!-- container -->
+		<div class="container">
+			<h1>Buy {{product.name}}</h1>
+			<ol class="item-breadcrumb">
+	            <li><a href="{% url 'app:home' %}">Home</a></li>
+	            <li>{{product.name}} BUY PAGE</li>     
+            </ol>
+		</div>
+		<!-- /container -->
+   	</div>
+    <!-- =====================================
+    	==== End breadcrumb -->
+
+
+	<!-- =====================================
+    	==== Start single-product -->
+	<div class="single-product">
+		<!-- Container -->
+		<div class="container">
+			<!-- Row -->
+			<div class="row">
+				<div class="product-info">
+					<div class="col-md-6">
+						<div class="row">
+	                        <ul class="featuredPostSlider col-md-10 col-sm-11">
+			                     <li>
+			                        <img class="product-featured-image product_selector_1" src="assets/images/product_single/product_single_4.jpg" alt="">
+			                    </li>
+			                     <li>
+			                        <img class="product-featured-image" src="assets/images/product_single/product_single_2.jpg" alt="">
+			                    </li>		                     
+			                    <li>
+			                        <img class="product-featured-image" src="assets/images/product_single/product_single_3.jpg" alt="">
+			                    </li>
+			                     <li>
+			                        <img class="product-featured-image" src="assets/images/product_single/product_single_1.jpg" alt="">
+			                    </li>
+			                     <li>
+			                        <img class="product-featured-image" src="assets/images/product_single/product_single_5.jpg" alt="">
+			                    </li> 
+	                   		</ul>
+		                    <div id="slick-page">
+			                    <div class="pagerNavigation pagerNavigationTop">
+			                        <span class="top"><i class="fa fa-angle-up"></i></span>                        
+			                    </div>                    
+			                    <div class="slick-pager">
+			                      	<a data-slide-index="1" href="javascript:void(0)">    
+			                      	  <img class="product-featured-image" src="assets/images/product_single/product_single_4.jpg" alt="">                   
+			                      	</a>
+			                      	<a data-slide-index="3" href="javascript:void(0)">    
+			                      	  <img class="product-featured-image" src="assets/images/product_single/product_single_2.jpg" alt="">                   
+			                      	</a>
+			                      	<a data-slide-index="4" href="javascript:void(0)">    
+			                      	  <img class="product-featured-image" src="assets/images/product_single/product_single_3.jpg" alt="">                   
+			                      	</a>
+			                      	<a data-slide-index="5" href="javascript:void(0)">    
+			                      	  <img class="product-featured-image" src="assets/images/product_single/product_single_1.jpg" alt="">                   
+			                      	</a>
+			                      	<a data-slide-index="6" href="javascript:void(0)">    
+			                      	  <img class="product-featured-image" src="assets/images/product_single/product_single_5.jpg" alt="">                   
+			                      	</a>
+			                      
+			                    </div>
+			                    <div class="pagerNavigation pagerNavigationBottom">                        
+			                        <span class="bottom"><i class="fa fa-angle-down"></i></span>
+			                    </div>
+			                </div>
+		                </div>
+			 		</div>
+			 		<div class="col-md-6">
+						<div class="product-meta clearfix">
+							<span class="product-rating" data-rating="">
+								<span class="star-rating">
+									<i class="fa fa-star-o"></i>
+									<i class="fa fa-star-o"></i>
+									<i class="fa fa-star-o"></i>
+									<i class="fa fa-star-o"></i>
+									<i class="fa fa-star-o"></i>
+								</span>
+							</span>
+							<!-- end rating -->
+							<h4 class="product-name">
+								<a href="#" title="">{{product.name}}</a>
+							</h4><!-- /.product-product -->
+
+							<div class="product-price">
+								<span class="amout">
+									<span><span class="money" data-currency-usd="₹{{product.price}}">₹{{product.price}}</span></span>
+								</span>
+							</div><!-- /.product-price -->
+							<div class="excerpt" style=''>
+						         Our UV-C Light Sanitizng Wand is Swachh Bharat and Swasth Bharat (Clean India and Fit India) product which 
+								 is made in India. UV-C Sterilization occurs depends on the application without damaging any surfaces, make 
+								 non-toxic, no residue, no odour, no secondary pollution. It can keep our home and stuff clean, effectively
+								 improve living environment. As we there are many micro-organism and germs nearby us which can’t be seen from 
+								 our naked eyes. This product helps in killing those germs and micro-organism. It can be used to sanitize any
+								 surface including table, papers, files letters, currency, clothes, clothes, fruits, vegetables, groceries, cell
+								 phone, laptop, keyboard, mouse, children toys. We can also this on our household items like pillows, bed, dining
+								  table, bed-sheets, tooth brushes, comb and many other items. 
+								<ul  >
+									<li> Measurement- 44 x 4 x 4 cm Weight- 500 g.</li>
+									<li> Material- Stainless Steel.</li>
+									<li> Operating and Electrical- Power(nom)- 11 W, Lamp Current (nom) - 0.4A, Voltage-34V, UV-C radiation at 100 hr-2.6W</li>
+									<li> UVC refers to ultraviolet light with wavelengths between 253.7 nanometers (nm). Light in the UVC wavelength can be used for disinfecting water, sterilizing surfaces, destroying harmful micro-organisms in food products and in air.</li>
+									<li> Made in India</li>
+									<li> 6 months warranty.</li>
+									<li style="color:red;">Warning: Eye and skin damage may result from direct exposure to the light produced by these UV Lamps.</li>
+								</ul>           
+						    </div>
+{% comment %} 
+                            <table class="variations">
+                            	<tbody>
+                            		
+                            		<tr>
+                            			<td class="label"><label>Size:</label></td>
+                            			<td class="value">
+                            				<div class="tawcvs-swatches" id="size_selector" data-attribute_name="attribute_pa_size">
+                            					<span class="swatch swatch-label swatch-l" title="L" data-value="l">L</span>
+                            					<span class="swatch swatch-label swatch-m" title="M" data-value="m">M</span>
+                            					<span class="swatch swatch-label swatch-s" title="S" data-value="s">S</span>
+                            					<span class="swatch swatch-label swatch-xl" title="XL" data-value="xl">XL</span>
+                            				</div>
+                            			</td>
+                            		</tr>
+                            		<tr>
+                            			<td class="label"><label>Color:</label></td>
+                            			<td class="value">
+                            				<div class="tawcvs-swatches color_selector" data-attribute_name="attribute_pa_color">
+                            					<span class="swatch swatch-color swatch-blue" title="Blue" data-value="blue">Blue</span>
+                            					<span class="swatch swatch-color swatch-green" title="Green" data-value="green">Green</span>
+                            					<span class="swatch swatch-color swatch-orange" title="orange" data-value="orange">orange</span>
+                            					<span class="swatch swatch-color swatch-purple" title="Purple" data-value="purple">Purple</span>
+                            					<span class="swatch swatch-color swatch-red" title="Red" data-value="red">Red</span>
+                            				</div>
+                            			</td>
+                            		</tr>
+                            	</tbody>
+                            </table> {% endcomment %}
+
+						    <div class="product-footer">
+								<form action="{% url 'app:cart' %}" class="add-to-cart" method="POST" enctype="multipart/form-data">{% csrf_token %}
+									<input class="cart-qty-box" type="number" name="count" value="1" min="1">
+									<input type="hidden" name="id" value="">
+				
+								<button type="submit" class="btn btn-primary">
+									Add To Cart<i class="fa fa-shopping-bag" aria-hidden="true"></i>
+								</button>
+								</form>
+								<div class="product-actions">
+									<a href="#" data-id="" class="btn wishlist product-quick-whistlist" title="Add to whistlist">
+									<i class="fa fa-heart-o"></i>
+									</a>
+									<a href="" data-id="" class="btn product-quick-compare btn-compare" title="Reload">
+									    <i class="fa fa-retweet"></i>
+									</a>
+								</div>
+							</div>
+							<div class="social-sharing">
+								<h6 class="text-uppercase">Share:</h6>
+                                <a class="facebook social-icon" href="#"><i class="fa fa-facebook"></i></a>
+                                <a class="twitter social-icon" href="#"><i class="fa fa-twitter"></i></a>
+                                <a class="pinterest social-icon" href="#"><i class="fa fa-pinterest"></i></a>
+                                <a class="gplus social-icon" href="#"><i class="fa fa-google-plus"></i></a>
+                                <a class="linkedin social-icon" href="#"><i class="fa fa-linkedin"></i></a>
+							</div>
+						</div><!-- /.product-meta -->
+			 		</div>
+			 	</div>
+			 	<!-- product-tab-description -->
+			 	<div class="col-md-12 product-description-tabs">
+	                <ul class="nav">
+					    <li class="active"><a data-toggle="tab" href="#tab_description">Description</a></li>
+					    <li><a data-toggle="tab" href="#tab_information">Frequently Asked Questions (FAQs)</a></li>
+					    <li><a data-toggle="tab" href="#tab_reviews">Reviews</a></li>
+					</ul>
+					<div class="tab-content">
+					    <div id="tab_description" class="tab-pane fade in active">
+					      	<p style='overflow: scroll;height: 500px;'>
+							  <b>Warranty:</b> 6 Month from the date of delivery,  We Provide Warranty card with book manual.<br> 
+
+								<b>Why choose Assured UV-C Light Sanitizer?</b><br>
+								POWERFUL<br>
+								<b>Certified Anti-germ 99.9%</b>: The UV-C disinfection light destroys the molecular 
+								structure of DNA or RNA in viruses with light wavelength in the range of 253.7nm. After
+								 year’s efforts and tests, this UV sanitizer light has anti-germ rate up to 99.99%.<br>
+								<b>EXTREMELY EFFECTIVE: </b>
+								Turn ON the UVC Sanitizer light, sweep the UV light sanitizer wand across the surface or
+								 stuff you desire to clean from a distance of several inches.<br>
+								<b>Enemy of Harmful Substance: </b>
+								It destroys the DNA structure of harmful substance to lose the ability to reproduce, and 
+								then destroy harmful substance. Ultraviolet (UV-C) light help to eliminate bacteria, viruses
+								etc on the surfaces of most household and personal items. It can be used for sanitization of
+								fruits, shoes, floor, dining table, bed, sofa, and other directly consumable items. 
+								Remove odours, bacteria, germs and allergies.<br>
+								<b>Kill of 99.9% Germs: </b>
+								The UV Light disinfectant kills 99.9% of germs vastly. The Philip lamp tube has a high permeability,
+								 which ensures a higher sterilization efficiency. It can be used in mobile phones, iPads, keyboards,
+								  laptops, toys, toothbrushes, remote controls, door handles, toilet covers, mugs, steering wheels,
+								   hotel and family closets, toilets and pet areas to achieve all-round anti germ!<br>
+								<b>Safe &amp;  Effective</b>
+								Ultraviolet Light makes it safe to use. And high purity Philip lamp tube means it's more durable, whose
+								 lamp tube life reaches 9000 hours. It’s clean and eliminates effectively and efficiently. Switch on/ off,
+								  you can use it to scan wherever you want to be sanitized.<br>
+
+								<b>A Good Helper In A Healthy Life！: </b>
+								This UV-C light sanitizer can disinfect any type of textiles, plastics, surfaces and clothing in contact
+								 with the body. UV-C is also used in medical and hospital settings to sterilize instruments, work surfaces
+								  and the air. Protect the health of family and children at any time.<br>
+
+								<b>Sterilization Principle:</b>
+								The purple light disinfection lamp destroys the molecular structure of DNA (Deoxyribonucleic acid) or RNA 
+								(Ribonucleic acid) in bacterial Viruses through ultraviolet rays with wavelength in the range of 253.7 nm,
+								 causing growth cell death or regenerative cell death. So as to achieve the effect of sanitization. <br>
+
+								
+								<b>EXTREMELY EFFECTIVE</b> - Turn ON the UV-C Sanitizer light, sweep the UV-C light sanitizer wand across the surface or stuff you desire to clean from a distance of several inches. Sterilization occurs depend on application without damaging any surfaces, makes non-toxic, no residue, no odour, no secondary pollution.<br>
+								<b>PORTABLE</b> - Portable, Sterilize Anytime and Anywhere. UV-C sanitizer lamp has built-in cable cord, compact design and light weight super convenient to stored it in backpack or suitcase for use while traveling and outings. Warning - Ultraviolet C radiation can cause skin damage, so avoid direct explore of it on the human body, also avoid direct contact to eyes as the tube radiance will affect your eyes This Product is not recommended to use by the children and Senior Citizens.<br>
+								<b>QUALITY &amp; DESIGN</b> - UV-C light Sterilizer is a exquisite wand that with nice touch feel, constructed from selected ABS material and advanced led light beads to ensure optimal sterilization effect. Durable UV-C Lamp lifespan is more than 9000 hours. The uv-c sterilizer light is CE, RoHs certified, established reputation for disinfecting and sanitizing, and safety.<br>
+								<b>SAFETY</b> - UV-C disinfection lamp is widely used for home, office, school sanitizing. A nice choice to disinfecting phones, toys, keyboards, laptops, toothbrushes and toilet covers. Sterilize pillow cases, clothes and bedding.<br>
+							</p>
+					      
+					    </div>
+					    <div id="tab_information" class="tab-pane fade">
+					    <p style='overflow: scroll;height: 500px;'>
+						<b>Question: How much is power output in Watt?</b><br>
+						Answer: Its output watt is 11.<br><br>
+						<b>Question: Could you suggest some protective gear like goggles as this UV-C harmful and reflect on surface of floors?</b><br>
+						Answer: If you are using UV glass than it is good for your eyes.<br><br>
+						<b>Question: Can it be used for sanitization of fruits, groceries and other directly consumable items? </b><br>
+						Answer: Yes, it can be used for sanitization of fruits, groceries and other directly consumable items. Require time to sanitize the item is depends on its properties or surface area.<br><br>
+						<b>Question: Is it alright to use this to sanitize for wires or electronic appliances extension cords and switch board.</b><br> 
+						Answer: Yes, we can use it for any kind of item to sanitize. Example shoes, floor, dining table, bed, sofa, vegetables, cloths, etc. all kind of item you can sanitize.
+						<br><br>
+						<b>Question: Can it be used over a person’s clothes at the entry of shop/mall etc?</b><br> 
+						Answer: Yes, it can be used over a person's clothes at the entry of a shop/mall etc.<br><br>
+						<b>Question: How to operate it? What safety measure we need to take? How long we need to show on objects? </b><br>
+						Answer: Just plug in and there is small switch on handle, switch that on and apply on surface which you want to sterilizer, and for time, if you apply slowly for 10 seconds and hold over the object the work will done, just you should take precaution of your skin and eyes.<br><br>
+						<b>Question: Is there warranty period? </b><br>
+						Answer: We provide 6 months Warranty.<br><br>
+						<b>Question: How long I need to leave the light UV on the product I want to disinfect to have the best result of 99,9% ?</b><br>
+						Answer:  It depends upon the different items, but as per research mostly all kinds of surface can be disinfected max in 10 seconds. And please take care of direct contact of EYE and skin.<br><br>
+						<b>Question: How much time it takes to sanitize the one room or take an example of bed and clothes, almirah? </b><br>
+						Answer: It will take approx,45 minutes to disinfect 150 sq feet area room.<br><br>
+
+						<b>Question: Where it in manufactured?</b><br>
+						Answer: It is manufactured in India “Made in India” product.<br><br>
+						<b>Question: Is UV-C Disinfection system safe for home use?</b><br>
+						Answer: The UV-C Disinfection system incorporates certain safety measures for use by humans, which measures are detailed in the various safety instructions mentioned in the user manual. Auto cut of feature is provided to avoid accidental UV-C radiation exposure for the user, never bypass the door switch or use the system with damaged front glass.<br><br>
+
+						<b>Question: For what products can I use UV-C Disinfection system? Will it disinfect the items from inside?</b><br>
+						Answer: The device is useful for surface disinfection, i.e. surface at which the UV-C radiation fall will be disinfected, items inside packaging, cover, utensils will not be disinfected, as UV-C rays will not travel through any surface including metal, plastic or even glass.<br><br>
+
+						<b>Question: Which part of the items will be disinfected?</b><br>
+						Answer: The surfaces of object receiving UV-C light will be disinfected, UV-C Disinfection system has special coating inside which helps UV-C radiation to get reflected from the walls of the product.<br><br>
+
+						<b>Question: Is the visible blue light the UV-C radiation?</b><br>
+						Answer: The Philips UV-C lamp inside the product emits UV-C radiation as well as a blue glow visible to user. The blue light indicates that the disinfection operation is in process. The light visible to the eye is not UV-C (human eye cannot see UV-C radiation).<br><br>
+
+						<b>Question: Do we need to evacuate the room while using the system?</b><br>
+						Answer: No, UV-C Disinfection system is fitted with special glass door which blocks and contains UV-C radiation within the UV-C Disinfection system, keeping UV-C radiation in safer limits and thus there is no need to evacuate the room while using the system. Only visible light passes through the glass door, which is not harmful in any way.<br>
+						<b>Note</b>- Never bypass the door protection switch or use device
+						with a damaged door.<br><br>
+
+						<b>Question: Can water be purified using UV-C Disinfection system?</b><br>
+						Answer: The device is effective for surface disinfection of objects and not for treating drinking water.<br><br>
+
+						<b>Question: Can the UV-C Disinfection system disinfect my mobile/ electronic items?</b><br>
+						Answer: Yes, the system can be used to disinfect electronic items like mobile, laptop, iPad/ tablet, etc.<br><br>
+
+						<b>Question: How can I service the UV-C Disinfection system?</b><br>
+						Answer: The UV-C Disinfection system contains no user serviceable parts and for service-related query please contact authorized service team.<br><br>
+
+						<b>Question: Can the product be used for disinfecting packed frozen food like Ice-cream?</b><br>
+						Answer: Yes, the system does not heat the object being disinfected, it can disinfect packed items in matter of minutes.<br><br>
+
+						<b>Question: For how long can I expose any item to UV radiations?</b><br>
+						Answer: Expose the items to the radiations as per recommended time. Longer the exposer better is the disinfection. Repeated usage over a long time may result in some discoloration and change
+						in surface property of objects.<br><br>
+
+						<b>Question: Can the product be used to sterilize medical products/ equipment?</b><br>
+						Answer: Device should not be used for sterilization/ disinfection of surgical tools and medical equipment.<br><br>
+						</p> 
+						</div>
+					    <div id="tab_reviews" class="tab-pane fade">
+				            <div class="rattings-wrapper">
+							{% for review in reviews %}
+				            	<div class="review-ratting">
+                                    <div class="star-author-all">
+                                        <div class="ratting-author">
+                                            <h3>{{review.author}}</h3>
+                                            <span>{{review.time}}</span>
+                                        </div>
+                                        <div class="ratting-star">
+                                            <span class="fa fa-star" aria-hidden="true"></span>
+                                            <span class="fa fa-star" aria-hidden="true"></span>
+                                            <span class="fa fa-star" aria-hidden="true"></span>
+                                            <span class="fa fa-star" aria-hidden="true"></span>
+                                            <span class="fa fa-star" aria-hidden="true"></span>
+                                            <span>({{review.rating}})</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="reviews_content clearfix">{{review.comment}}</div>
+                                </div>{% empty %}
+								<div class="review-ratting">
+                                    <div class="star-author-all">
+                                        <div class="ratting-author">
+										<h3>No reviews yet.</h3>
+									</div>
+								</div>
+								{% endfor %}
+				            </div>
+							{% if user.is_authenticated %}
+							{% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+					        <form class="form-product-review" action="{% url 'app:product' %}" method="POST">{% csrf_token %}
+				                <h5>ADD YOUR REVIEW</h5>
+				                <div class="form-group">
+			                    	<label class="control-label">Your Rating</label>
+				                    <p class="ratting-star">
+									<input type="number" id="rating" class="form-control" name="rating" min="1" max="5" placeholder="must be in range of 1 to 5"  required>
+									</p>
+			                    </div>
+			                    <div class="form-group">
+			                    	<label class="control-label" for="comment">Your Review</label>
+			                    	<textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true" required></textarea>
+			                    </div>
+				                <div class="row">
+				                    <div class="form-group col-md-6">
+				                      	<label for="author" class="control-label">Name 
+					                      	<span class="required">*</span>
+					                     </label>
+				                       <input id="author" class="form-control" name="author" type="text"  size="30" aria-required="true" value="{{user.first_name}}" required readonly>
+				                    </div>
+				                    <div class="form-group col-md-6">
+				                      	<label for="email" class="control-label">Email 
+				                      		<span class="required">*</span>
+				                      	</label>
+				                      	<input id="email" class="form-control" name="email" type="email" size="30" value="{{user.email}}" aria-required="true" required readonly>
+				                    </div>
+				                    <div class="form-submit col-md-12">
+										<input name="submit" type="submit" id="submit" class="btn btn-primary" value="Send"> 
+									</div>
+				                </div>
+				             </form>{% endif %}{% if not user.is_authenticated %}
+							 <a href="{% url 'app:account' %}" class="btn btn-primary">Login To Write Review<i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+							 {% endif %}
+							 
+							 <a href="{% url 'app:reviews' %}" class="btn btn-primary">See All Reviews<i class="fa fa-shopping-bag" aria-hidden="true"></i></a>
+
+						</div>    
+					</div>
+			 	</div>
+			 	<!--/product-tab-description -->
+	 		</div>
+	 	</div>
+	</div>
+	<!-- =====================================
+    	==== End single-product -->
+
+	<!-- =====================================
+    	==== Start up-sells -->
+
+	<!-- =====================================
+    	==== End up-sells -->
+
+{% endblock %}

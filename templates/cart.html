@@ -1,0 +1,103 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}{{title}}{% endblock  %}
+{% block  content %}
+	<!-- =====================================
+    	==== Start breadcrumb -->
+   	<div class="breadcrumb">
+   		<!-- container -->
+		<div class="container">
+			<h1>Cart</h1>
+			<ol class="item-breadcrumb">
+	            <li><a href="{% url 'app:home' %}">Home</a></li>
+	            <li>Cart</li>     
+            </ol>
+		</div>
+		<!-- /container -->
+   	</div>
+    <!-- =====================================
+    	==== End breadcrumb -->
+
+
+	<!-- =====================================
+    	==== Start cart -->
+	<div class="page-cart">
+		<!-- container -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<form class="cart-form table_responsive" action="{% url 'app:cart' %}" method="POST">{% csrf_token %}
+						<table class="shop_table table cart cart-form__contents">
+							<thead>
+								<tr>
+									<th class="product-thumbnail">Product</th>
+									<th class="product-name">Name</th>
+									<th class="product-price">Price</th>
+									<th class="product-quantity">Quantity</th>
+									<th class="product-subtotal">Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="cart-form__cart-item cart_item">
+									<td class="product-thumbnail">
+										<a href="{% url 'app:product' %}">
+											<img src="{% static 'assets/images/product/product_2.jpg' %}" alt="">
+										</a>
+									</td>
+									<td class="product-name" data-title="Product">
+										<a href="{% url 'app:product' %}">{{cart.item.name}}</a>	
+									</td>
+									<td class="product-price" data-title="Price">
+										<span class="price-amount amount"><span class="price-currencySymbol">₹</span>{{cart.item.price}}</span>			
+									</td>
+									<td class="product-quantity" data-title="Quantity">
+										<div class="quantity">
+											<input type="number" class="input-text qty text" name="count" step="1" min="1" value="{{cart.count}}" title="Qty" size="4">
+										</div>
+									</td>
+									<td class="product-subtotal" data-title="Total">
+										<span class="price-amount amount"><span class="price-currencySymbol">₹</span>{{total}}</span>					
+									</td>
+
+								</tr>
+
+								<tr>
+									<td colspan="6" class="actions">
+										<div class="clearfix">
+										<div class="coupon pull-left"> 
+											<input type="text" name="coupon_code" class="input-text " id="coupon_code" value="" placeholder="No Coupons" readonly> 
+										</div>
+											<div class="pull-right"> 
+												<input type="submit" class="btn btn-primary" name="update_cart" value="Update Cart"> 
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+				<div class="col-md-4">
+					<div class="grand-totall">
+                        <div class="title-wrap">
+                            <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
+                        </div>
+                        <h5>Total products: <span>₹{{total}}</span></h5>
+                        <div class="total-shipping">
+                            <h5>Total shipping</h5>
+                            <ul>
+                                <li><input type="checkbox"> Standard: <span>₹0.00</span></li>
+                                <li><input type="checkbox"> Express: <span>₹0.00</span></li>
+                            </ul>
+                        </div>
+                        <h4 class="grand-totall-title">Total:  <span>₹{{total}}</span></h4>
+                        <a href="{% url 'app:checkout' %}" class="btn btn-primary checkout-button">Proceed to Checkout</a>
+                    </div>
+				</div>
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- =====================================
+    	==== End cart -->
+
+{% endblock %}

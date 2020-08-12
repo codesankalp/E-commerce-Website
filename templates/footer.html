@@ -1,0 +1,141 @@
+{% load static %}
+    <footer class="site-footer site-footer-3 clearfix">
+    	<div class="site-footer__main section-bg" style="background-image:url({% static 'assets/images/bg_footer.jpg)' %}">
+	    	<div class="container">
+	    		<div class="col-md-5 col-sm-6 col-xs-12 footer-block pb-30">
+		    		 <img src="{% static 'assets/images/logo.png' %}" alt=""> 
+		    		 <p class="address pt-30">Office: UV Pure Private Limited C-52 Sector-6 Near Noida Authority, Noida-201301 (Uttar Pradesh)<br/>
+						Phone: (+91) 120-4346715<br/>
+						Email: <span>info@uvpuretech.com / info@uvpuretech.in</span>
+					</p>
+					<ul class="social pt-10">
+						<li>
+							<a href="#"><i class="fa fa-facebook"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-google"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-instagram"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-pinterest"></i></a>
+						</li>
+					</ul>
+		    	</div>
+		    	<div class="col-md-4 col-sm-6 col-xs-12 footer-block pb-30">
+	    			<center><h3 class="widget-title">Quick Links</h3>
+	    			<ul>
+	    				<li><a href="{% url 'app:about' %}">About Us</a></li>
+	    				<li><a href="{% url 'app:contact' %}">Contact Us</a></li>
+	    				<li><a href="{% url 'app:product' %}">Our Product</a></li>
+	    				<li><a href="{% url 'app:career' %}">Career</a></li>
+	    				<li><a href="{% url 'app:home' %}">Home</a></li>
+	    			</ul></center>
+		    	</div>
+
+		    	{% comment %} <div class="col-md-2 col-sm-6 col-xs-12 footer-block pb-30">
+	    			<img src="{% static 'assets/images/lamp2.png' %}">
+		    	</div> {% endcomment %}
+		    	<div class="col-md-3 col-sm-6 col-xs-12 footer-block pb-30">
+		    		<h3 class="widget-title">CONNECT WITH US</h3>
+		    		<div class="features skin1">
+		    			<div class="features_list">
+							<div class="features-images">
+								<img src="{% static 'assets/images/icon_mail.png' %}" alt="">
+							</div>
+							<div class="features-description">
+								<h4>Do you have any question?</h4>
+								<p>
+									info@uvpuretech.com
+								</p>
+								<p>
+									info@uvpuretech.in
+								</p>
+							</div>
+						</div>
+						<div class="features_list">
+							<div class="features-images">
+								<img src="{% static 'assets/images/icon_phone.png' %}" alt="">
+							</div>
+							<div class="features-description">
+								<h4>(+91) 120-4346715</h4>
+								<p>
+									(+91) 120-4346715
+								</p>
+							</div>
+						</div>
+		    		</div>
+		    		<div class="payment pt-20">
+		        		<img src="{% static 'assets/images/payment.png' %}" alt="">
+		        	</div>
+		    	</div>
+		    </div>
+	   </div>
+	  <div class="site-footer__copyright">
+	   		<div class="container">
+	    		<div class="copyright pull-left">
+	        		© 2020. All rights reserved.<a href="{% url 'app:home' %}" target="_blank">UV Pure Pvt. Ltd.</a>
+	        	</div>
+				<div class="copyright pull-right">
+	        		© Developed By <a href="https://www.linkedin.com/in/dassankalp/" target="_blank">Sankalp</a>
+	        	</div>
+	       </div>
+	   </div>
+    </footer>
+    <!-- =====================================
+    	==== End footer -->
+
+   	<!-- back-to-top-->
+    <div id="back-to-top"></div>
+    <!-- back-to-top -->
+     
+
+    <!-- =====================================
+    	====Start preloader -->
+    <div id="preloader">
+		<div class="preloader">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+    <!-- =====================================
+    	==== End preloader -->
+
+ 	<!-- =====================================
+    	====Start all js here -->
+
+	<!-- jquery js-->
+   	<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+
+	<!-- bootstrap js-->
+	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+	<!-- slick js-->
+	<script src="{% static 'assets/js/slick.min.js' %}"></script>
+
+	<!-- spritespin js-->
+	<script src="{% static 'assets/js/jquery-ui.min.js' %}"></script>
+
+	<!-- sliderPro js-->
+	<script src="{% static 'assets/js/jquery.sliderPro.min.js' %}"></script>
+
+    <!-- waypoints js-->
+    <script src="{% static 'assets/js/jquery.waypoints.js' %}"></script>
+
+	<!-- counterup js-->
+	<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+
+	<!-- custom js-->
+	<script src="{% static 'assets/js/custom.js' %}"></script>
+    
+	<!-- =====================================
+    	==== End all js herej -->
+     
+</body>
+</html>

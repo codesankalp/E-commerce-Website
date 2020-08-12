@@ -1,0 +1,169 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}{{title}}{% endblock  %}
+{% block  content %}
+
+	  <!-- =====================================
+      ==== Start breadcrumb -->
+   	<div class="breadcrumb">
+   		<!-- container -->
+		<div class="container">
+			<h1>Cart</h1>
+			<ol class="item-breadcrumb">
+	            <li><a href="{% url 'app:home' %}">Home</a></li>
+	            <li>Cart</li>     
+            </ol>
+		</div>
+		<!-- /container -->
+   	</div>
+   <!-- =====================================
+      ==== End breadcrumb -->
+
+
+	<!-- =====================================
+      ==== Start checkout-form-->
+  <i class="{{ form.country.flag_css }}"></i>
+	<div class="checkout-form">
+		<!-- container -->
+		<div class="container">
+			<!-- Row -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                        {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    <form action="{% url 'app:checkout' %}" method="POST">{% csrf_token %}
+                        <h3>Billing Details</h3>
+                        <div class="row">
+                            <div class="col-md-12 mb-30">
+                                {{form.country}}    
+                            </div>
+                            
+                            <div class="col-lg-6 mb-30">
+                                <label for="b_f_name">Name <span>*</span></label>
+                                <input id="b_f_name" name="name" type="text" value="{{user.first_name}}" readonly>    
+                            </div>
+                            <div class="col-lg-6 mb-30">
+                                <label for="b_name">User Name  <span>*</span></label>
+                                <input id="b_name" type="text" name="username" value="{{user.username}}" readonly> 
+                            </div>
+                            <div class="col-md-12 mb-30">
+                                <label for="b_c_name">Phone Number</label>
+                                <input type="tel" name="phone" pattern="[0-9]{10}"  class="form-control" placeholder="Your Phone: 123456XXXX (10-digit without code)" id="phone" required>   
+                            </div>
+                            <div class="col-md-12 mb-30 order-notes">
+                                <label>Address <span>*</span></label>
+                                <textarea id="order_note" placeholder="Complete address (Street Address,Apartment, suite, unit etc. (optional) )" type="text" name="address" required></textarea>     
+                            </div>
+                            <div class="col-md-12 mb-30">
+                                <label for="b_city">Town / City <span>*</span></label>
+                                <input id="b_city" placeholder="Town / City" name="city" type="text" required>     
+                            </div>
+                            <div class="col-lg-6 mb-30">
+                                <label for="f_name">State / Country  <span>*</span></label>
+                                <input id="f_name" type="text" name="state" required>    
+                            </div> 
+                             <div class="col-lg-6 mb-30">
+                                <label for="b_zip">Postcode / Zip <span>*</span></label>
+                                <input placeholder="Postcode / Zip" id="b_zip" type="number" name="zip_code" required>    
+                            </div> 
+                            <div class="col-lg-6 mb-30">
+                                <label for="b_email">Email Address <span>*</span></label>
+                                <input id="b_email" type="email" name="email" value="{{user.email}}" readonly>    
+                            </div> 
+                            <div class="col-md-12">
+                                <div class="order-notes">
+                                     <label for="order_note">Order Notes</label>
+                                    <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery." name="notes"></textarea>
+                                </div>    
+                            </div>     	    	    	    	    	    	    
+                        </div>
+                       
+                </div>
+                <div class="col-lg-6 col-md-6">
+
+                    <div class="order-wrapper">
+                        <h3>Your order</h3>
+                        <div class="order-table table-responsive mb-30">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-total">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="product-name"> {{cart.item.name}} <strong> × {{cart.count}}</strong></td>
+                                        <td class="amount"> ₹{{total}}</td>
+                                    </tr>
+                                    
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Cart Subtotal</th>
+                                        <td>₹{{total}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Order Total</th>
+                                        <td><strong>₹{{total}}</strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>    
+                        </div>
+                        <div class="payment-method">
+                           {% comment %} <div class="panel-default">
+                                <a class="righ_10" data-toggle="collapse" data-target="#collapsethree" aria-controls="collapseOne">Direct Bank Transfe</a>
+
+                                <div id="collapsethree" class="collapse" data-parent="#accordion">
+                                    <div class="card-body2">
+                                       <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="panel-default">
+                                <a class="righ_10" data-toggle="collapse" data-target="#collapsefour" aria-controls="collapseOne">Cheque Payment</a>
+
+                                <div id="collapsefour" class="collapse" data-parent="#accordion">
+                                    <div class="card-body2">
+                                       <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="panel-default">
+                                <a class="righ_10" data-toggle="collapse" data-target="#collapsefive" aria-controls="collapseOne"> PayPal</a>
+
+                                <div id="collapsefive" class="collapse" data-parent="#accordion">
+                                    <div class="card-body2">
+                                       <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                    </div>
+                                </div>
+                            </div> {% endcomment %}
+
+                            <div class="order-button">
+                                <button type="submit" class="btn-primary">Place order</button> 
+                            </div>
+                                 
+                        </div>
+                        </form>    
+                    </div>  
+                </div>
+            </div> 
+            <!-- Row -->
+        </div>
+		<!-- /container -->
+	</div>
+	<!-- =====================================
+      ==== End checkout-form -->
+
+{% endblock %}

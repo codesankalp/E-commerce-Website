@@ -1,0 +1,211 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}{{title}}{% endblock  %}
+{% block  content %}
+	<!-- =====================================
+    	==== Start breadcrumb -->
+   	<div class="breadcrumb">
+		<div class="container">
+			<h1>About us</h1>
+			<ol class="item-breadcrumb">
+	            <li><a href="{% url 'app:home' %}">Home</a></li>
+	            <li>About us</li>     
+            </ol>
+		</div>
+   	</div>
+   <!-- End breadcrumb ====
+    	======================================= -->
+
+
+	<!-- =====================================
+    	==== Start page-about -->
+	<div class="page-about">
+		<!-- section-image -->
+		<div class="section-image pb-50 clearfix">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<div class="section-bg bg-overlay text-white" style="background-image:url({% static 'assets/images/about/about_1.jpg' %})">
+							<h3 class="section-image__title">
+							“अब बंद करें केमिकल,<br> सैिनटाइज़र व साबुन
+                    		की धुलाई किरए<br> सूरज सी रौशनी से सफाई |”
+							</h3>
+						</div>
+					</div>
+					<div class="col-md-4 hidden-xs hidden-sm">
+						<img src="{% static 'assets/images/about/about_2.png' %}" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/section-image -->
+
+		<!-- section-experience -->
+		<div class="section-experience pt-50 pb-50 clearfix">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-sm-12 col-xs-12">
+						<div class="section-number section-bg section-bg-fix bg-overlay text-center" style="background-image:url({% static 'assets/images/about/about_3.jpg' %})">
+							<h4 class="experience-title text-uppercase">years of experience</h4>
+							<div class="experience-number">28</div>
+						</div>
+					</div>
+					<div class="col-md-8 col-sm-12 col-xs-12">
+						<div class="experience-content">
+							<h3 class="experience-title">We have created beautifull products for you</h3>
+							<div class="experience-description">
+								<p style='overflow: scroll;height: 350px;'>
+									Our company has been in manufacturing, trading and exports since <b>1992</b> and is promoted by principal Director promoter <b>Mr. Rajesh Bhagat</b>.<br>
+									Brands <b>UV Pure</b> and <b>UV swatch</b> are trade mark's owned by the company.
+									The company is manufacturing various products using UV germicidal lamps for <b>“Swachh Bharat”</b> and <b>“Swasth Bharat”</b> using technology from<b> Germany, Poland and USA </b>and manufacturing in <b>India.</b><br> 
+									Principal promoter of the company is <b>Mr. Rajesh Bhagat</b> who has been in
+									business of manufacturing, trading and exports for over <b>30 years.</b><br>
+																		
+									<b>Dr. Monica Bhagat</b> one of the promoters of the company with
+									professional experience of over 30 years.<br>
+									<b>
+									Er. Rahat Bhagat</b> the Marketing Director, done Engineering from Sheffield UK and MBA from Lancaster University. <br>
+									<b>
+									Er.Raghav Bhagat</b> is an alumnus of IIT (Delhi) and is the technical and
+									Design Director. He is also promoter of Austin UVPuretech, Tx, USA.<br>
+<b>
+									Mrs. Priyanka Khanna</b> is the Director Admin.
+									Stuti Ajmani is Director strategies ans sales.<br>
+
+									We have the team of highly qualified engineers from well reputed colleges.<br>
+									<b>Our Motto: </b><br>
+									1.	To symbolize the best incorporate philosophies, a pioneering innovative approach through indigenously developed expertiese.<br>
+									2. To have highly professional and motivated team.<br>
+									3. To use excellent infrastruacture facilities in ulltimate goal of customers' satisfaction ln quality and reliability.<br>
+									<b>Delivery:</b><br>
+
+									We lay a lot of emphasis on time. we follow just in time. we follow just in time delivery schedule with most of our customers, we keep track records of their production schedule, despatch on time according to customers' requirement.<br><br>
+
+									<b>Design &amp; development :</b><br>
+
+									We have a fully designing team which day to day work on different projects of our company, we always try to give to our customer the best.
+<br><br>
+
+									<b>Quality Objectives:</b><br>
+
+									1. To upgrade skill of our team members through strict compliance to training schedule.<br>
+									2. To reduce customer complaints through effective in-house inspection.<br>
+									3. To Provide on time delivery of products to our customers.<br>
+									4. To continually enhance customer satisfaction by meeting their ever-changing requirements.<br><br>
+
+									<b>UP Pure ~ quality mind:</b><br>
+
+									1. Quality First, Quality First, Quality First<br>
+									2. Quality First, Production must<br>
+									3. Our target "Zero" defect.<br>
+									4. Quality begins with us<br>
+									5. Customer is the final judge of Quality.<br>
+									6. Stick to the quality basics<br>
+									7. Our goal is to supply international quality and reliability products to our customers satisfaction.<br>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /section-experience -->
+
+		<!-- section-kind -->
+		<div class="section-kind features skin1 clearfix pt-50 pb-50">
+			<div class="container">
+				<div class="heading text-uppercase text-center pb-100">
+					<div class="heading__sub">
+						The best of a kind
+					</div>
+					<div class="heading__title">
+						Explore Our Company
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="features_list">
+							<div class="features-images">
+								<img src="{% static 'assets/images/icon_feature1.png' %}" alt="">
+							</div>
+							<div class="features-description">
+								<h4>Dedicated Team</h4>
+								<p>Objectively innovate empowered manufactured products whereas parallel platforms.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="features_list">
+							<div class="features-images">
+								<img src="{% static 'assets/images/icon_feature2.png' %}" alt="">
+							</div>
+							<div class="features-description">
+								<h4>Best Engineers</h4>
+								<p>
+								Distinctively re-engineer revolutionary meta-services and premium architectures.
+							</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="features_list">
+							<div class="features-images">
+								<img src="{% static 'assets/images/icon_feature3.png' %}" alt="">
+							</div>
+							<div class="features-description">
+								<h4>24/7 Supports</h4>
+								<p>
+								Holisticly predominate extensible testing procedures for reliable supply chains.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /section-kind -->
+
+		<!-- section-counter -->
+		{% comment %} <div class="section-counter section-bg clearfix pt-50" style="background-image:url(assets/images/about/about_bg_counter.jpg)">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="counter_number text-center">
+							<span class="counter">2346</span>
+							<h5>Employees from around on the world</h5>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="counter_number text-center">
+							<span class="counter">345</span><span>+</span>
+							<h5>We Care About Our Investors</h5>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="counter_number text-center">
+							<span class="counter">26</span><span>+</span>
+							<h5>People Are Our Biggest Capital</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> {% endcomment %}
+		<!-- /section-counter -->
+
+		<!-- section-exprore -->
+		<div class="section-exprore clearfix pt-50">
+			<div class="container">
+				<div class="section-bg section-bg-fix bg-overlay text-white text-center" style="background-image:url({% static 'assets/images/about/about_4.jpg' %})">
+					<h3>You'll be happy to see our <br/> Upcoming Products.</h3>
+					<p>In future we are going to increase our product line for customers like you.
+					Till then explore our current product which is good and tested by our buyers and customers.</p>
+					<a href="{% url 'app:product' %}" class="color-primary font-bold pt-20">Explore our products!</a>
+				</div>
+			</div>
+		</div>
+		<!-- /section-exprore -->
+	</div>
+	<!-- End page-about ====
+    	======================================= -->
+
+{% endblock %}

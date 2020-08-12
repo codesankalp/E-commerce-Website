@@ -1,0 +1,95 @@
+/*-----------------------------
+    Main Menu reponsive
+ -------------------------------*/
+@media only screen and (max-width: 767px){
+    .header{
+        display: none;
+    }
+    .topbar{
+          margin-bottom: 15px;
+    }
+    .header-main{
+        nav{
+           align-items: center;
+            .navbar-brand{
+                text-align: center;
+            }
+        }
+        .site-header{
+            float: right;
+        }
+    }
+    .header-mobile{
+        .header-mobile-top{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            .site-header.-icon i[class*="fa-"]{
+                margin: 0px;
+                border: none;
+            }
+        }
+        .navbar{
+            padding: 5px 15px;
+            box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.05);
+            .navbar-toggle{
+                border: solid 1px $theme-color;
+                .icon-bar{
+                    background: $theme-color;
+                }
+            }
+            a{
+              text-transform: capitalize;   
+            }
+            .navbar-nav{
+                li{
+                    border-top: solid 1px $border-color-second;
+                }
+                .dropdown-menu{
+                    font-size: 16px;
+                    padding: 0px;
+                    li{
+                        a{
+                            padding: 9px 20px;
+                           
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .site-footer .site-footer__top .newsletter{
+        display: block;
+        form{
+            width: 100%;
+        }
+    }
+}
+@media only screen and (max-width:480px){
+    .site-header{
+        &.-icon img{
+            padding: 5px;
+            border: none;
+        }
+        .site-header__cart{
+            > a {
+                .cartcount{
+                    top: -3px;
+                    right: 0px;
+                    width: 18px;
+                    height: 18px;
+                    line-height: 18px;
+                    border-radius: 50%;
+                }
+                 .cartcost{
+                    display: none;
+                }
+            }
+        }
+        .site-header__search {
+            margin-right: 5px;
+        }
+    }
+}
+

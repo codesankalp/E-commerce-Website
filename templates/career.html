@@ -1,0 +1,170 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}{{title}}{% endblock  %}
+{% block  content %}
+{% load crispy_forms_tags %}
+<!-- Start breadcrumb ====
+    	======================================= -->
+   	<div class="breadcrumb">
+   		<!-- container -->
+		<div class="container">
+			<h1>Career</h1>
+			<ol class="item-breadcrumb">
+	            <li><a href="{% url 'app:home' %}">Home</a></li>
+	            <li>Career</li>     
+            </ol>
+		</div>
+		<!-- /container -->
+   	</div>
+    <!-- End breadcrumb ====
+    	======================================= -->
+
+
+	<!-- Start contact ====
+    	======================================= -->
+	<div class="page-contact">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
+					<div class="heading-contact text-center">
+						<h2 class="text-uppercase">Join Us</h2>
+						<p>We offer immense opportunities to ensure that all paths lead to success. It's about enjoying everything from the pressures of sticking to commitments to having a laugh with your colleagues to brainstorming ideas for a new product development. 
+Interested candidates send their resume info@uvpuretech.com
+						</p>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="tab-contact clearfix">
+						 <ul class="nav" role="tablist">
+						    <li class="active"><a data-toggle="tab" href="#tab_contact1">India</a></li>
+						    <li><a data-toggle="tab" href="#tab_contact2">Other Country</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-5">
+				    <div class="tab-content features skin1">
+				    	<div id="tab_contact1" class="tab-pane fade in active">
+							<div class="items_group clearfix">
+								<div class="features_list list_item clearfix">
+			                        <div class="features-images">
+			                           <img src="{% static 'assets/images/icon_contact_phone.png' %}" alt="">
+			                        </div>
+			                        <div class="features-description">
+			                            <h4>Call Us</h4>
+			                            <p>
+			                            	Feel free to call us on (+91) 120-4346715,<br/>
+											Monday - Friday, 8am - 7pm
+										</p>
+			                        </div>
+			                    </div>
+			                    <div class="features_list list_item clearfix">
+			                        <div class="features-images">
+			                           <img src="{% static 'assets/images/icon_contact_mail.png' %}" alt="">
+			                        </div>
+			                        <div class="features-description">
+			                            <h4>Drop a Line</h4>
+			                            <p>
+			                            	Drop us a line at  <strong><a href="mailto:info@uvpuretech.in">info@uvpuretech.in</a> </strong>,
+			                            	<br/><strong><a href="mailto:info@uvpuretech.com">info@uvpuretech.com</a> </strong>and we’ll get back soon.
+										</p>
+			                        </div>
+			                    </div>
+			                    <div class="features_list list_item clearfix">
+			                        <div class="features-images">
+			                           <img src="{% static 'assets/images/icon_contact_map.png' %}" alt="">
+			                        </div>
+			                        <div class="features-description">
+			                            <h4>Visit Us</h4>
+			                            <p>
+			                            	Come visit us at C-52 Sector-6 Near Noida Authority,<strong> Noida-201301</strong>, Uttar Pradesh
+										</p>
+			                        </div>
+			                    </div>
+		                    </div>
+		                </div>
+		                <div id="tab_contact2" class="tab-pane fade">
+                            <div class="items_group clearfix">
+								<div class="features_list list_item clearfix">
+			                        <div class="features-images">
+			                           <img src="{% static 'assets/images/icon_contact_phone.png' %}" alt="">
+			                        </div>
+			                        <div class="features-description">
+			                            <h4>Call Us</h4>
+			                            <p>
+			                            	Feel free to call us on (+91) 120-4346715,<br/>
+											Monday - Friday, 8am - 7pm
+										</p>
+			                        </div>
+			                    </div>
+			                    <div class="features_list list_item clearfix">
+			                        <div class="features-images">
+			                           <img src="{% static 'assets/images/icon_contact_mail.png' %}" alt="">
+			                        </div>
+			                        <div class="features-description">
+			                            <h4>Drop a Line</h4>
+			                            <p>
+			                            	Drop us a line at  <strong><a href="mailto:info@uvpuretech.in">info@uvpuretech.in</a> </strong>,
+			                            	<br/><strong><a href="mailto:info@uvpuretech.com">info@uvpuretech.com</a> </strong>and we’ll get back soon.
+										</p>
+			                        </div>
+			                    </div>
+			                    <div class="features_list list_item clearfix">
+			                        <div class="features-images">
+			                           <img src="{% static 'assets/images/icon_contact_map.png' %}" alt="">
+			                        </div>
+			                        <div class="features-description">
+			                            <h4>Visit Us</h4>
+			                            <p>
+			                            	Come visit us at C-52 Sector-6 Near Noida Authority,<strong> Noida-201301</strong>, Uttar Pradesh
+										</p>
+			                        </div>
+			                    </div>
+		                    </div>
+					   	</div>
+	                </div>
+				</div>
+				<div class="col-md-7">
+				        {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+				<center><p style="color:red;"><span>{{warning}}</span></p></center>
+					<div class="row">
+						<form action="{% url 'app:career' %}" method="POST" id="commentform" class="comment-form">{% csrf_token %}
+                            {{form|crispy}}
+							
+							<div class="form-submit col col-md-12">
+								<input name="submit" type="submit" id="submit" class="btn btn-primary" value="Send"> 
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="map pt-40 pb-40">
+						 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d875.8005940748792!2d77.31691782921048!3d28.59370499890207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce4f13bed4311%3A0x7ca1f084b263659b!2sAsian%20Soles%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1596549631796!5m2!1sen!2sin" allowfullscreen>
+	            		</iframe>
+	            	</div>
+				</div>
+
+				
+				
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- End contact ====
+    	======================================= -->
+	
+{% endblock %}

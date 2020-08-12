@@ -1,0 +1,173 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+    <meta name="robots" content="noindex, follow" />
+
+	<title>{% block title %}{{title}}{% endblock %}</title>
+
+	<!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.png' %}">
+
+	<!-- font-awesome CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.css' %}">
+
+	<!-- preloader CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/preloader.css' %}"> 
+
+	<!-- slider-pro CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/slider-pro.css' %}">
+
+	<!-- slick CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/slick.css' %}">
+
+	<!-- main CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+
+	<!-- google font CSS -->
+	<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+</head>
+
+<body>
+	<!-- =====================================
+    	==== Start header -->
+	<!-- header-desktop -->
+	<header class="header">
+		<div class="topbar pt-30 pb-30">
+			<div class="container d-flex justify-content-between align-items-center">
+				<div class="top-bar">
+					<div class="header-language item-dropdown header-currency item-dropdown">
+						<a class="logo" href="{% url 'app:home' %}">
+							<img src="{% static 'assets/images/logo.png' %}" alt=""> 
+						</a>
+					</div>
+				</div>
+				<div class="otf-flex-item"></div>
+				<div class="navbar-header">
+					
+				</div>
+				<div class="otf-flex-item"></div>
+				<div>
+					<span class="text-quote-author" style=" font-size: 20px; color: #0523AD; font-family: Rokkitt,Georgia,serif;"><b>UV PURE PRIVATE LIMITED </b></span><br>
+					<span class="text-quote-quote" style="font-size: 15px;"><b>“अब बंद करें केमिकल, सैिनटाइज़र व साबुन</b></span><br>
+                    <span class="text-quote-quote" style=" font-size: 15px;"><b>की धुलाई किरए सूरज सी रौशनी से सफाई |”</b></span>
+				</div>
+		    </div>
+		</div>
+	    <!-- header-main -->
+	    <div class="header-main pb-10 pt-10">
+	    	<div class="container">
+			    <nav id="nav" class="navbar">
+					<!--  Main navigation  -->
+					<ul class="main-nav nav navbar-nav navbar-right">
+						<li class="dropdown active">
+							<a href="{% url 'app:home' %}">Home</a>
+						</li>
+			         	<li class="dropdown">
+			         		<a href="{% url 'app:product' %}">Buy Product</a>
+			         	</li>
+			           	<li class="dropdown"><a href="{% url 'app:about' %}">About</a></li>
+			            <li class="dropdown">
+			            	<a href="{% url 'app:career' %}">Career</a>
+			            </li>
+			            <li><a href="{% url 'app:contact' %}">Contact</a></li>
+						<li>
+							{% if not user.is_authenticated %}
+							<a href="{% url 'app:account' %}" class="account-btn">
+								<img src="{% static 'assets/images/icon_account.png' %}" alt="">
+								Login
+							</a>
+						
+							{% endif %}{% if user.is_authenticated %}
+							<a href="{% url 'app:logout' %}" class="account-btn">
+								<i class="fa fa-sign-out" aria-hidden="true"></i>
+								Logout
+							</a>
+							{% endif %}
+						</li>
+						
+
+				    <!-- cart -->
+						<li>
+							<a href="{% url 'app:cart' %}" class="site-header__cart-toggle">
+								<span class="cartcount">1</span>
+								<i class="fa fa-shopping-basket" aria-hidden="true"></i> 
+								<span class="cartcost"><span class="money" data-currency-usd="₹CART">CART (₹)</span></span>
+							</a>
+						</li>
+						<li>
+						{% if user.is_superuser %}
+						<a class="site-header__cart-toggle" href="{% url 'admin:index' %}">Admin<i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+						{% endif %}
+						</li>
+		        </div>
+					</ul>
+					<!-- /Main navigation -->
+				</nav>
+	    	</div>
+	    </div>
+	    <!-- /header-main -->
+	</header>
+	<!-- /header-desktop -->
+	<!-- header-mobile -->
+	<div class="header-mobile">
+		<nav class="navbar">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <!-- logo -->
+		      <a class="logo" href="{% url 'app:home' %}">
+					<img src="{% static 'assets/images/logo.png' %}" alt=""> 
+				</a>
+		      <!-- logo -->
+		    </div>
+
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      	<ul class="nav navbar-nav">
+			       <li>
+			          	<a href="{% url 'app:home' %}" >Home</a>
+		       		</li>
+			        <li>
+			          	<a href="{% url 'app:product' %}" >Buy Product</a>
+		       		</li>
+		       		<li>
+			          	<a href="{% url 'app:career' %}" >Career</a>
+		       		</li>
+		       		<li><a href="{% url 'app:contact' %}">Contact</a></li>
+		      	</ul>
+		    </div>
+		</nav>
+	</div>
+	<div class="footer-mobile-bar">
+		<ul class="columns-2">
+			<li class="my-account">
+							{% if not user.is_authenticated %}
+							<a href="{% url 'app:account' %}" class="my-accrount-footer">
+								<i class="fa fa-user-o" aria-hidden="true"></i>
+							</a>
+						
+							{% endif %}{% if user.is_authenticated %}
+							<a href="{% url 'app:logout' %}" class=class="my-accrount-footer">
+								<i class="fa fa-sign-out" aria-hidden="true"></i>
+							</a>
+							{% endif %}          
+			</li>
+			<li class="cart">
+				<a class="footer-cart-contents" href="{% url 'app:cart' %}" title="View your shopping cart">
+					<i class="fa fa-shopping-basket" aria-hidden="true"></i>
+					<span class="count">1</span>
+				</a>
+			</li>
+		</ul>
+    </div>
+	<!-- End header ====
+    	======================================= -->
+
+	

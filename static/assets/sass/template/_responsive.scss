@@ -1,0 +1,73 @@
+@media only screen and (min-width: 767px){
+    .header-mobile,
+    .footer-mobile-bar{
+        display: none;
+    }
+    .avatar{
+		float: left;
+		
+	}
+	.product-feature{
+		.product-feature__meta{
+			a.btn {
+	 			display: flex;
+	 		}
+		}
+	}
+}
+
+@media only screen and (max-width: 992px){
+	.slider-pro h2.sp-layer {
+	    font-size: 50px;
+	    line-height: 50px;
+	    letter-spacing: -4px;
+	}
+	.product-info{
+		.product-meta{
+			padding-top: 20px;
+		}
+	}
+	.sidebar{
+        padding-top: 60px;
+    }
+    .blog article .blog-content {
+        padding: 10px;
+    }
+}
+@media only screen and (max-width: 767px){
+	.blog{
+		.blog-list{
+			article{
+				display: block;
+			}
+		}
+	}
+	.product-feature{
+        .feature-product {
+            .product-feature__meta{
+                display: block;
+            }
+            .product-price{
+                padding-bottom: 20px;
+            }
+        }
+    }
+    .instagram-content{
+        display: block;
+         li{
+            width: 50%;
+            float: left;
+        }
+    }
+	.page-404 .content-404 .title_404{
+   		 font-size: 200px;
+	}
+	.avatar{
+		text-align: center;
+		padding-bottom: 20px;
+	}
+	.account-form-container{
+		padding: 20px;
+	}
+	
+}
