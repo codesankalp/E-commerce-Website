@@ -36,7 +36,7 @@ class Review(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=1000, default='UV PURE',unique=True)
-    price = models.IntegerField(default=4399)
+    price = models.FloatField(default=4399)
 
     def __str__(self):
         return "{} - {}".format(self.name, self.price)
@@ -68,7 +68,10 @@ class Cart(models.Model):
 
 
 class Checkout(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    cart = models.ForeignKey(Cart, on_delete=models.SET_NULL, blank=True, null=True)
+    payment = models.ForeignKey('Payment', on_delete = models.SET_NULL, blank=True, null=True )
+    ordered = models.BooleanField(default=False)
     country = CountryField(default="IN",multiple=False)
     name = models.CharField(max_length=1000)
     username = models.CharField(max_length=1000)
@@ -80,7 +83,7 @@ class Checkout(models.Model):
     phone = models.CharField(max_length=12)
     notes = models.TextField(blank=True,null=True)
     time = models.DateTimeField(auto_now_add=True)
-    cart = models.OneToOneField(Cart, on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return self.user.username
@@ -106,3 +109,16 @@ class Career(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Payment(models.Model):
+    stripe_charge_id = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete = models.SET_NULL, blank=True, null=True)
+    amount = models.FloatField()
+    time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} - {}".format(self.user.username, self.stripe_charge_id)
+
+    class Meta:
+        ordering = ['-time']

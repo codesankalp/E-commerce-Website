@@ -7,6 +7,13 @@
 	<section class="section-main-slider">
 		<div class="main-slider my-slider slider-pro skin2" id="my-slider-1" data-slider-width="100%" data-slider-height="670">
 		    <div class="sp-slides">
+			{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+				<center><li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li></center>
+				{% endfor %}
+			</ul>
+			{% endif %}
 		        <!-- Slide 1 -->
 		       	<div class="sp-slide section-bg" style="background-image:url({% static 'assets/images/slider/home3_slider1.jpg' %})">
 		           		<span class="sp-layer main-slider__img" data-horizontal="0" data-vertical="100"  data-show-transition="up" data-hide-transition="left" data-show-duration="800" data-show-delay="400" data-hide-delay="400">

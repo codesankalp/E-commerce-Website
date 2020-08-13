@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -5,9 +6,12 @@ from django.contrib.auth.models import User
 from .forms import UserForm,ContactForm,ReviewForm,CheckoutForm,CareerForm
 from django.core.mail import send_mail,mail_admins
 from uv.settings import EMAIL_HOST_USER
-from .models import Review,Contact,Cart,Product,Checkout
-import random
+from .models import Review,Contact,Cart,Product,Checkout,Payment
+from django.views.generic import View
+from django.contrib import messages
+import stripe
 
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def handler404(request, exception):
     return render(request,'404.html',{
@@ -71,12 +75,6 @@ def contact(request):
     return render(request, 'contact.html',{
         "form":form,
         "title": "Contact"  
-    })
-
-
-def faq(request):
-    return render(request, 'faq.html',{
-        "title": "FAQs"
     })
 
 
@@ -198,6 +196,9 @@ def cart(request):
 
 @login_required
 def checkout(request):
+    '''
+    :Checkout Page for saving users address:
+    '''
     form = CheckoutForm(request.POST or None)
     try:
         cart = Cart.objects.get(user=request.user)
@@ -211,6 +212,7 @@ def checkout(request):
         check.user = request.user
         check.cart = cart
         check.save()
+        return redirect('app:payment',check.pk)
 
     return render(request, 'checkout.html',{
         "title":"CHECKOUT",
@@ -221,6 +223,9 @@ def checkout(request):
 
 
 def career(request):
+    '''
+    :For Career page form:
+    '''
     form = CareerForm(request.POST or None)
     if form.is_valid():
         data = form.cleaned_data
@@ -239,3 +244,119 @@ def career(request):
         "title":"CAREER WITH US",
         "form":form
     })
+
+
+class PaymentView(View):
+    '''
+    :For payment page:
+    '''
+    def get(self, *args, **kwargs):
+        try:
+            cart = Cart.objects.get(user=self.request.user)
+        except:
+            cart = Cart(user=self.request.user,item=Product.objects.get(pk=1))
+            cart.save()
+
+        total = int(cart.get_total())
+        key = self.kwargs['key'] #for checkout
+        if Checkout.objects.get(pk=self.kwargs['key']).user != self.request.user:
+            return render(self.request,'404.html',{
+                "title" : "Page Not Found",
+                "error" : "404",
+            })
+        return render(self.request, "payment.html", {
+            "title":"payment",
+            "cart":cart,
+            "total":total,
+            "key": key,
+        })
+
+    def post(self, *args, **kwargs):
+        try:
+            cart = Cart.objects.get(user=self.request.user)
+        except:
+            cart = Cart(user=self.request.user,item=Product.objects.get(pk=1))
+            cart.save()
+        if Checkout.objects.get(pk=self.kwargs['key']).user != self.request.user:
+            return render(self.request,'404.html',{
+                "title" : "Page Not Found",
+                "error" : "404",
+            })
+        checkout = Checkout.objects.get(pk=self.kwargs['key'])
+        print(checkout)
+        total = int(cart.get_total())
+        
+        try:
+            token = self.request.POST.get('stripeToken')
+            customer = stripe.Customer.create(
+                email = self.request.user.email,
+                name = self.request.user.first_name,
+                source=token,
+                description = "buying UV PURE product."
+            )
+            charge = stripe.Charge.create(
+                customer = customer,
+                amount=total*100,
+                currency="inr",
+                # source=token,
+                description="buying UV PURE product.",
+            )
+
+            # creating payment
+            payment = Payment()
+            payment.stripe_charge_id = charge['id']
+            payment.user = self.request.user
+            payment.amount = total
+            payment.save()
+
+            # adding to checkout
+            checkout.ordered = True
+            checkout.payment = payment
+            checkout.save()
+            messages.success(self.request, "Your order was successful! Check your mail for order reciept.")
+            return redirect("/")
+
+
+        except stripe.error.CardError as e:
+                body = e.json_body
+                err = body.get('error', {})
+                messages.warning(self.request, f"{err.get('message')}")
+                return redirect("/")
+
+        except stripe.error.RateLimitError as e:
+            # Too many requests made to the API too quickly
+            messages.warning(self.request, "Rate limit error")
+            return redirect("/")
+
+        except stripe.error.InvalidRequestError as e:
+            # Invalid parameters were supplied to Stripe's API
+            print(e)
+            messages.warning(self.request, "Invalid parameters")
+            return redirect("/")
+
+        except stripe.error.AuthenticationError as e:
+            # Authentication with Stripe's API failed
+            # (maybe you changed API keys recently)
+            messages.warning(self.request, "Not authenticated")
+            return redirect("/")
+
+        except stripe.error.APIConnectionError as e:
+            # Network communication with Stripe failed
+            messages.warning(self.request, "Network error")
+            return redirect("/")
+
+        except stripe.error.StripeError as e:
+            # Display a very generic error to the user, and maybe send
+            # yourself an email
+            messages.warning(
+                self.request, "Something went wrong. You were not charged. Please try again.")
+            return redirect("/")
+
+        except Exception as e:
+            # send an email to ourselves
+            messages.warning(
+                self.request, "A serious error occurred. We have been notifed.")
+            return redirect("/")
+
+        messages.warning(self.request, "Invalid data received")
+        return redirect("app:payment")
