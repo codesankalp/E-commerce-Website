@@ -147,3 +147,5 @@ LOGIN_URL = '/login'
 
 
 STRIPE_SECRET_KEY = 'sk_test_51HFb0dENyLEwDe5D0d85qwGGW99PBcRtLaeZvK6Ehe2ZQV0xDJBJyFLqEGxNXBfxoDBmPgDQO17iqhg3IpyCad8C00BUa12Usd'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
